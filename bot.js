@@ -1,1 +1,0 @@
-const API_TOKEN = '1295066323:AAGSRE9ikE-s16k4vRfqo3pD-sZ3uoBcdHE';
