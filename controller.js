@@ -3,7 +3,7 @@ const userModel = require('./model');
 const Controller = {
     getUser: async (telegramId) => {
         try {
-            const user = await userModel.find({ telegramId });
+            const user = await userModel.findOne({ telegramId });
             return user;
         } catch (error) {
             throw new Error(error);
