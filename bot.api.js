@@ -63,7 +63,7 @@ bot.onText(/\/reset/, async (msg, match) => {
 
 bot.onText(/\/name (.+)/, async (msg, match) => {
     const chatId = msg.chat.id;
-    const text = match[1];
+    const text = match[1].trim();
 
     try {
         const user = await controller.getUser(chatId);
