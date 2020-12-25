@@ -1,6 +1,14 @@
 const userModel = require('./model');
 
 const Controller = {
+    getUsers: async () => {
+        try {
+            const users = await userModel.find();
+            return users;
+        } catch (error) {
+            throw new Error(error);
+        }
+    },
     getUser: async (telegramId) => {
         try {
             const user = await userModel.findOne({ telegramId });

@@ -13,6 +13,16 @@ const strings = new LocalizedStrings({
         hasNotUser: `I do not know you yet, please write a command /start.`,
         error: `Oops! Something went wrong! Try again!`,
         end: `Everything is ready to receive the weather! I will send you the weather for the day every morning! Thank you!`,
+        date: 'Date',
+        sunrise: 'Sunrise',
+        sunset: 'Sunset',
+        temp: 'Temperature',
+        tempFeelsLike: 'Feels like',
+        pressure: 'Pressure',
+        humidity: 'Humidity',
+        clouds: 'Clouds',
+        currentWeather: 'Current weather',
+        forecastWeather: 'Forecast weather',
     },
     ru: {
         introduction: 'Привет! Пожалуйста, выбери язык.',
@@ -26,6 +36,16 @@ const strings = new LocalizedStrings({
         hasNotUser: 'Я тебя еще не знаю, напиши пожалуйста команду /start.',
         error: 'Упс! Что-то пошло не так! Попробуй еще раз!',
         end: 'Все готово для получения погоды! Я буду присылать тебе каждое утро погоду на день! Спасибо!',
+        date: 'Дата',
+        sunrise: 'Восход',
+        sunset: 'Закат',
+        temp: 'Температура',
+        tempFeelsLike: 'Как ощущается',
+        pressure: 'Давление',
+        humidity: 'Влажность',
+        clouds: 'Облачность',
+        currentWeather: 'Погода сейчас',
+        forecastWeather: 'Прогноз погоды',
     }
 });
 

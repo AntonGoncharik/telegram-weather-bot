@@ -119,43 +119,6 @@ bot.on('location', async (query) => {
                 longitude: query.location.longitude,
             });
             bot.sendMessage(chatId, strings.getString('end', user.language));
-
-            // test weather
-            const result = await weatherService.getWeather(user.latitude, user.longitude);
-
-            const currentWeather = {
-                date: result.current.dt,
-                sunrise: result.current.sunrise,
-                sunset: result.current.sunset,
-                temp: result.current.temp,
-                tempFeelsLike: result.current.feels_like,
-                pressure: result.current.pressure,
-                humidity: result.current.humidity,
-                clouds: result.current.clouds,
-            };
-
-            const forecastWeather = result.daily.map((item) => {
-                return (
-                    {
-                        date: item.dt,
-                        sunrise: item.sunrise,
-                        sunset: item.sunset,
-                        tempMin: item.temp.min,
-                        tempMax: item.temp.max,
-                        tempMorn: item.temp.morn,
-                        tempDay: item.temp.day,
-                        tempEve: item.temp.eve,
-                        tempNight: item.temp.night,
-                        tempFeelsLikeMorn: item.feels_like.morn,
-                        tempFeelsLikeDay: item.feels_like.day,
-                        tempFeelsLikeEve: item.feels_like.eve,
-                        tempFeelsLikeNight: item.feels_like.night,
-                        pressure: item.pressure,
-                        humidity: item.humidity,
-                        clouds: item.clouds,
-                    }
-                )
-            });
         } else {
             bot.sendMessage(chatId, strings.getString('hasNotUser', 'en'));
         }
