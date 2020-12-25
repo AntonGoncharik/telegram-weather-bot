@@ -15,13 +15,6 @@ const user = new mongoose.Schema({
         required: false,
         default: null,
     },
-    city: {
-        type: String,
-        index: true,
-        unique: false,
-        required: false,
-        default: null,
-    },
     language: {
         type: String,
         index: true,
