@@ -69,10 +69,8 @@ bot.onText(/\/name (.+)/, async (msg, match) => {
         const user = await controller.getUser(chatId);
         if (user) {
             const user = await controller.updateUser(chatId, { name: text });
-            bot.sendMessage(chatId, `${strings.getString('greeting', user.language)} ${text}!`);
-            setTimeout(() => {
-                bot.sendMessage(chatId, strings.getString('location', user.language), getKeyboardLocation(user.language));
-            }, 0);
+            await bot.sendMessage(chatId, `${strings.getString('greeting', user.language)} ${text}!`);
+            await bot.sendMessage(chatId, strings.getString('location', user.language), getKeyboardLocation(user.language));
         } else {
             bot.sendMessage(chatId, strings.getString('hasNotUser', 'en'));
         }
