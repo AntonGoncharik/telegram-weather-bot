@@ -10,6 +10,7 @@ const weatherService = {
                     lat: latitude,
                     lon: longitude,
                     exclude: 'minutely,hourly',
+                    units: 'metric',
                 }
             });
             return result.data;
