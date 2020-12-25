@@ -3,6 +3,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const controller = require('./controller');
 const config = require('./config');
 const strings = require('./localization');
+const weatherService = require('./weather.api');
 
 const bot = new TelegramBot(config.telegramApiToken, { polling: true });
 
@@ -118,6 +119,10 @@ bot.on('location', async (query) => {
                 longitude: query.location.longitude,
             });
             bot.sendMessage(chatId, strings.getString('end', user.language));
+
+            // test weather
+            const result = await weatherService.getWeather(user.latitude, user.longitude);
+            console.log('result', result);
         } else {
             bot.sendMessage(chatId, strings.getString('hasNotUser', 'en'));
         }
