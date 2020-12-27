@@ -37,7 +37,7 @@ const getFormattedWeather = (weather, user) => {
 
     weatherTextList.push(`${strings.getString('currentWeather', user.language)}:`);
 
-    weatherTextList.push(`${strings.getString('date', user.language)}: ${new Date(weather.current.dt * 1000).toLocaleDateString()}
+    weatherTextList.push(`${strings.getString('date', user.language)}: ${new Date(weather.current.dt * 1000).toLocaleDateString('ru-RU', { hour12: false })}
     ${strings.getString('sunrise', user.language)}: ${new Date(weather.current.sunrise * 1000).toLocaleTimeString()}
     ${strings.getString('sunset', user.language)}: ${new Date(weather.current.sunset * 1000).toLocaleTimeString()}
     ${strings.getString('temp', user.language)}: ${weather.current.temp} С
