@@ -36,7 +36,6 @@ const sendWeather = async () => {
 const start = async () => {
     try {
         await mongoose.connect(config.dbURL, config.dbOptions);
-
         // cron.schedule(config.schedule, sendWeather);
         sendWeather();
     } catch (error) {
