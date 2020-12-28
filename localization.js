@@ -24,6 +24,7 @@ const strings = new LocalizedStrings({
         windSpeed: 'Weend speed',
         description: 'Description',
         metreSec: 'metre/sec',
+        hPa: 'hPa',
     },
     ru: {
         introduction: 'Привет! Пожалуйста, выбери язык.',
@@ -48,6 +49,7 @@ const strings = new LocalizedStrings({
         windSpeed: 'Скорость ветра',
         description: 'Описание',
         metreSec: 'м/с',
+        hPa: 'гПа',
     },
 });
 
