@@ -19,14 +19,6 @@ const weatherService = {
             throw new Error(error);
         }
     },
-    getWeatherIcon: async (id) => {
-        try {
-            const result = await apiGet(`https://openweathermap.org/img/wn/${id}@2x.png`);
-            return result.data;
-        } catch (error) {
-            throw new Error(error);
-        }
-    },
 };
 
 module.exports = weatherService;
