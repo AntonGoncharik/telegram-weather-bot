@@ -15,7 +15,7 @@ const sendWeather = async () => {
         for (const user of users) {
             try {
                 if (user.latitude && user.longitude) {
-                    const result = await weatherService.getWeather(user.latitude, user.longitude);
+                    const result = await weatherService.getWeather(user.latitude, user.longitude, user.language);
 
                     const weatherTextList = helper.getFormattedWeather(result, user);
 
