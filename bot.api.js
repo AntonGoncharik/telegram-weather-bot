@@ -98,6 +98,21 @@ bot.onText(/\/language/, async (msg, match) => {
     }
 });
 
+bot.onText(/\/location/, async (msg, match) => {
+    const chatId = msg.chat.id;
+
+    try {
+        const user = await controller.getUser(chatId);
+        if (user) {
+            await bot.sendMessage(chatId, strings.getString('location', user.language), getKeyboardLocation(user.language));
+        } else {
+            bot.sendMessage(chatId, strings.getString('hasNotUser', 'en'));
+        }
+    } catch (error) {
+        bot.sendMessage(chatId, strings.getString('error', 'en'));
+    }
+});
+
 bot.on('callback_query', async (query) => {
     const chatId = query.message.chat.id;
 
