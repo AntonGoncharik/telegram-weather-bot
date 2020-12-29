@@ -83,6 +83,21 @@ bot.onText(/\/name (.+)/, async (msg, match) => {
     }
 });
 
+bot.onText(/\/language/, async (msg, match) => {
+    const chatId = msg.chat.id;
+
+    try {
+        const user = await controller.getUser(chatId);
+        if (user) {
+            bot.sendMessage(chatId, strings.getString('introduction', user.language), keyboardLanguages);
+        } else {
+            bot.sendMessage(chatId, strings.getString('hasNotUser', 'en'));
+        }
+    } catch (error) {
+        bot.sendMessage(chatId, strings.getString('error', 'en'));
+    }
+});
+
 bot.on('callback_query', async (query) => {
     const chatId = query.message.chat.id;
 
@@ -100,7 +115,9 @@ bot.on('callback_query', async (query) => {
             const user = await controller.getUser(chatId);
             if (user) {
                 const user = await controller.updateUser(chatId, { language: selectedLanguage });
-                bot.sendMessage(chatId, strings.getString('enterName', user.language));
+                if (!user.name) {
+                    bot.sendMessage(chatId, strings.getString('enterName', user.language));
+                }
             } else {
                 bot.sendMessage(chatId, strings.getString('hasNotUser', 'en'));
             }
