@@ -2,11 +2,11 @@ const LocalizedStrings = require('localized-strings').default;
 
 const strings = new LocalizedStrings({
     en: {
-        introduction: 'Hello! Please choose your language.',
-        enterName: 'Please type your name. Example: you need to write the command /name your name.',
+        introduction: 'Hello! Please, choose your language.',
+        enterName: 'Please, type your name. Example: you need to write the command /name your name.',
         greeting: 'Hello',
         buttonLocation: 'My location',
-        location: 'I also need to know your city. Please press the button My location.',
+        location: 'I also need to know your city. Please, press the button My location.',
         descriptionApp: 'I will send you the weather for the day every morning). If you want to start over, write the command /reset.',
         reset: `Let's start over. Write the command /start.`,
         hasUser: `You are exist, please try another command or write the command /reset.`,
@@ -37,6 +37,7 @@ const strings = new LocalizedStrings({
         southEast: 'South-East',
         east: 'East',
         northEast: 'North-East',
+        hasNotName: 'You did not enter your name! Please write again, I do not know who you are!',
     },
     ru: {
         introduction: 'Привет! Пожалуйста, выбери язык.',
@@ -74,6 +75,7 @@ const strings = new LocalizedStrings({
         southEast: 'Юго-Восток',
         east: 'Восток',
         northEast: 'Северо-Восток',
+        hasNotName: 'Ты не ввел свое имя! Напиши пожалуйста еще раз, я не знаю кто ты!',
     },
 });
 
