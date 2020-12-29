@@ -14,7 +14,7 @@ const sendWeather = async () => {
 
         for (const user of users) {
             try {
-                if (user.latitude && user.longitude) {
+                if (user.latitude && user.longitude && user.language) {
                     const result = await weatherService.getWeather(user.latitude, user.longitude, user.language);
 
                     const weatherTextList = helper.getFormattedWeather(result, user);
@@ -36,8 +36,8 @@ const sendWeather = async () => {
 const start = async () => {
     try {
         await mongoose.connect(config.dbURL, config.dbOptions);
-        // cron.schedule(config.schedule, sendWeather);
-        sendWeather();
+
+        cron.schedule(config.schedule, sendWeather);
     } catch (error) {
         console.log(error);
     }
