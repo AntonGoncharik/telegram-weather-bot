@@ -24,7 +24,8 @@ const sendWeather = async () => {
                     }
                 }
             } catch (error) {
-                bot.sendMessage(user.telegramId, strings.getString('error', user.language));
+                // bot.sendMessage(user.telegramId, strings.getString('error', user.language));
+                await bot.sendMessage(user.telegramId, error.message);
                 console.log(error);
             }
         }

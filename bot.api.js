@@ -36,12 +36,12 @@ bot.onText(/\/start/, async (msg, match) => {
         const user = await controller.getUser(chatId);
         if (!user) {
             const user = await controller.addUser({ telegramId: chatId });
-            bot.sendMessage(chatId, strings.getString('introduction', 'en'), keyboardLanguages);
+            await bot.sendMessage(chatId, strings.getString('introduction', 'en'), keyboardLanguages);
         } else {
-            bot.sendMessage(chatId, strings.getString('hasUser', user.language));
+            await bot.sendMessage(chatId, strings.getString('hasUser', user.language));
         }
     } catch (error) {
-        bot.sendMessage(chatId, strings.getString('error', 'en'));
+        await bot.sendMessage(chatId, strings.getString('error', 'en'));
     }
 });
 
@@ -52,12 +52,12 @@ bot.onText(/\/reset/, async (msg, match) => {
         const user = await controller.getUser(chatId);
         if (user) {
             const user = await controller.removeUser(chatId);
-            bot.sendMessage(chatId, strings.getString('reset', user.language));
+            await bot.sendMessage(chatId, strings.getString('reset', user.language));
         } else {
-            bot.sendMessage(chatId, strings.getString('hasNotUser', 'en'));
+            await bot.sendMessage(chatId, strings.getString('hasNotUser', 'en'));
         }
     } catch (error) {
-        bot.sendMessage(chatId, strings.getString('error', 'en'));
+        await bot.sendMessage(chatId, strings.getString('error', 'en'));
     }
 });
 
@@ -73,13 +73,13 @@ bot.onText(/\/name (.+)/, async (msg, match) => {
                 await bot.sendMessage(chatId, `${strings.getString('greeting', user.language)} ${text}!`);
                 await bot.sendMessage(chatId, strings.getString('location', user.language), getKeyboardLocation(user.language));
             } else {
-                bot.sendMessage(chatId, strings.getString('hasNotName', user.language));
+                await bot.sendMessage(chatId, strings.getString('hasNotName', user.language));
             }
         } else {
-            bot.sendMessage(chatId, strings.getString('hasNotUser', 'en'));
+            await bot.sendMessage(chatId, strings.getString('hasNotUser', 'en'));
         }
     } catch (error) {
-        bot.sendMessage(chatId, strings.getString('error', 'en'));
+        await bot.sendMessage(chatId, strings.getString('error', 'en'));
     }
 });
 
@@ -89,12 +89,12 @@ bot.onText(/\/language/, async (msg, match) => {
     try {
         const user = await controller.getUser(chatId);
         if (user) {
-            bot.sendMessage(chatId, strings.getString('introduction', user.language), keyboardLanguages);
+            await bot.sendMessage(chatId, strings.getString('introduction', user.language), keyboardLanguages);
         } else {
-            bot.sendMessage(chatId, strings.getString('hasNotUser', 'en'));
+            await bot.sendMessage(chatId, strings.getString('hasNotUser', 'en'));
         }
     } catch (error) {
-        bot.sendMessage(chatId, strings.getString('error', 'en'));
+        await bot.sendMessage(chatId, strings.getString('error', 'en'));
     }
 });
 
@@ -106,10 +106,10 @@ bot.onText(/\/location/, async (msg, match) => {
         if (user) {
             await bot.sendMessage(chatId, strings.getString('location', user.language), getKeyboardLocation(user.language));
         } else {
-            bot.sendMessage(chatId, strings.getString('hasNotUser', 'en'));
+            await bot.sendMessage(chatId, strings.getString('hasNotUser', 'en'));
         }
     } catch (error) {
-        bot.sendMessage(chatId, strings.getString('error', 'en'));
+        await bot.sendMessage(chatId, strings.getString('error', 'en'));
     }
 });
 
@@ -131,13 +131,13 @@ bot.on('callback_query', async (query) => {
             if (user) {
                 const user = await controller.updateUser(chatId, { language: selectedLanguage });
                 if (!user.name) {
-                    bot.sendMessage(chatId, strings.getString('enterName', user.language));
+                    await bot.sendMessage(chatId, strings.getString('enterName', user.language));
                 }
             } else {
-                bot.sendMessage(chatId, strings.getString('hasNotUser', 'en'));
+                await bot.sendMessage(chatId, strings.getString('hasNotUser', 'en'));
             }
         } catch (error) {
-            bot.sendMessage(chatId, strings.getString('error', 'en'));
+            await bot.sendMessage(chatId, strings.getString('error', 'en'));
         }
     }
 });
@@ -152,12 +152,12 @@ bot.on('location', async (query) => {
                 latitude: query.location.latitude,
                 longitude: query.location.longitude,
             });
-            bot.sendMessage(chatId, strings.getString('end', user.language));
+            await bot.sendMessage(chatId, strings.getString('end', user.language));
         } else {
-            bot.sendMessage(chatId, strings.getString('hasNotUser', 'en'));
+            await bot.sendMessage(chatId, strings.getString('hasNotUser', 'en'));
         }
     } catch (error) {
-        bot.sendMessage(chatId, strings.getString('error', 'en'));
+        await bot.sendMessage(chatId, strings.getString('error', 'en'));
     }
 });
 
