@@ -11,23 +11,23 @@ const helper = require('./helper');
 const sendWeather = async () => {
     try {
         const users = await controller.getUsers();
+        await bot.sendMessage(users[0].telegramId, 'test');
+        // for (const user of users) {
+        //     try {
+        //         if (user.latitude && user.longitude && user.language) {
+        //             const result = await weatherService.getWeather(user.latitude, user.longitude, user.language);
 
-        for (const user of users) {
-            try {
-                if (user.latitude && user.longitude && user.language) {
-                    const result = await weatherService.getWeather(user.latitude, user.longitude, user.language);
+        //             const weatherTextList = helper.getFormattedWeather(result, user);
 
-                    const weatherTextList = helper.getFormattedWeather(result, user);
-
-                    // for (const item of weatherTextList) {
-                    await bot.sendMessage(user.telegramId, `users: ${users.length}`);
-                    // }
-                }
-            } catch (error) {
-                bot.sendMessage(user.telegramId, strings.getString('error', user.language));
-                console.log(error);
-            }
-        }
+        //             for (const item of weatherTextList) {
+        //                 await bot.sendMessage(user.telegramId, `users: ${users.length}`);
+        //             }
+        //         }
+        //     } catch (error) {
+        //         bot.sendMessage(user.telegramId, strings.getString('error', user.language));
+        //         console.log(error);
+        //     }
+        // }
     } catch (error) {
         console.log(error);
     }
