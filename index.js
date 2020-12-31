@@ -13,6 +13,7 @@ const sendWeather = async () => {
         const users = await controller.getUsers();
 
         for (const user of users) {
+            await bot.sendMessage(user.telegramId, 'user');
             try {
                 if (user.latitude && user.longitude && user.language) {
                     const result = await weatherService.getWeather(user.latitude, user.longitude, user.language);
@@ -20,7 +21,7 @@ const sendWeather = async () => {
                     const weatherTextList = helper.getFormattedWeather(result, user);
 
                     for (const item of weatherTextList) {
-                        await bot.sendMessage(user.telegramId, item);
+                        // await bot.sendMessage(user.telegramId, item);
                     }
                 }
             } catch (error) {
