@@ -19,9 +19,9 @@ const sendWeather = async () => {
 
                     const weatherTextList = helper.getFormattedWeather(result, user);
 
-                    for (const item of weatherTextList) {
-                        await bot.sendMessage(user.telegramId, item);
-                    }
+                    // for (const item of weatherTextList) {
+                    await bot.sendMessage(user.telegramId, `users: ${users.length}`);
+                    // }
                 }
             } catch (error) {
                 bot.sendMessage(user.telegramId, strings.getString('error', user.language));
