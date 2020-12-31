@@ -17,16 +17,15 @@ const sendWeather = async () => {
             try {
                 if (user.latitude && user.longitude && user.language) {
                     const result = await weatherService.getWeather(user.latitude, user.longitude, user.language);
-
+                    await bot.sendMessage(user.telegramId, 'weather');
                     const weatherTextList = helper.getFormattedWeather(result, user);
 
                     for (const item of weatherTextList) {
-                        // await bot.sendMessage(user.telegramId, item);
+                        await bot.sendMessage(user.telegramId, item);
                     }
                 }
             } catch (error) {
-                // bot.sendMessage(user.telegramId, strings.getString('error', user.language));
-                await bot.sendMessage(user.telegramId, error.message);
+                bot.sendMessage(user.telegramId, strings.getString('error', user.language));
                 console.log(error);
             }
         }
