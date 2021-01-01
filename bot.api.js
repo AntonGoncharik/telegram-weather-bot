@@ -4,6 +4,7 @@ const controller = require('./controller');
 const config = require('./config');
 const strings = require('./localization');
 const weatherService = require('./weather.api');
+const helper = require('./helper');
 
 const bot = new TelegramBot(config.telegramApiToken, { polling: true });
 
@@ -105,6 +106,27 @@ bot.onText(/\/location/, async (msg, match) => {
         const user = await controller.getUser(chatId);
         if (user) {
             await bot.sendMessage(chatId, strings.getString('location', user.language), getKeyboardLocation(user.language));
+        } else {
+            await bot.sendMessage(chatId, strings.getString('hasNotUser', 'en'));
+        }
+    } catch (error) {
+        await bot.sendMessage(chatId, strings.getString('error', 'en'));
+    }
+});
+
+bot.onText(/\/weather/, async (msg, match) => {
+    const chatId = msg.chat.id;
+
+    try {
+        const user = await controller.getUser(chatId);
+        if (user && user.latitude && user.longitude && user.language) {
+            const result = await weatherService.getWeather(user.latitude, user.longitude, user.language);
+
+            const weatherTextList = helper.getFormattedWeather(result, user);
+
+            for (const item of weatherTextList) {
+                await bot.sendMessage(user.telegramId, item);
+            }
         } else {
             await bot.sendMessage(chatId, strings.getString('hasNotUser', 'en'));
         }
