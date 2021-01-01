@@ -8,7 +8,7 @@ const helper = {
         weatherTextList.push(`${strings.getString('currentWeather', user.language)}:`);
 
         weatherTextList.push(`*
-        ${strings.getString('date', user.language)}: ${new Date(weather.current.dt * 1000).toJSON().slice(0, 10).split('-').reverse().join('/')} ${new Date(weather.current.dt * 1000).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', hour12: false })}
+        ${strings.getString('date', user.language)}: ${new Date((weather.current.dt + weather.timezone_offset) * 1000).toJSON().slice(0, 10).split('-').reverse().join('/')} ${new Date((weather.current.dt + weather.timezone_offset) * 1000).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', hour12: false })}
         ${strings.getString('temp', user.language)}: ${weather.current.temp} °C
         ${strings.getString('tempFeelsLike', user.language)}: ${weather.current.feels_like} °C
         ${strings.getString('pressure', user.language)}: ${(weather.current.pressure / config.coefficientPressure).toFixed()} ${strings.getString('mmHg', user.language)}
@@ -26,7 +26,7 @@ const helper = {
             if (index < 25 && index > 0) {
                 weatherTextList.push(`
                 *
-                ${strings.getString('date', user.language)}: ${new Date(item.dt * 1000).toJSON().slice(0, 10).split('-').reverse().join('/')} ${new Date(item.dt * 1000).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', hour12: false })}
+                ${strings.getString('date', user.language)}: ${new Date((item.dt + weather.timezone_offset) * 1000).toJSON().slice(0, 10).split('-').reverse().join('/')} ${new Date((item.dt + weather.timezone_offset) * 1000).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', hour12: false })}
                 ${strings.getString('temp', user.language)}: ${item.temp} °C
                 ${strings.getString('tempFeelsLike', user.language)}: ${item.feels_like} °C
                 ${strings.getString('pressure', user.language)}: ${(item.pressure / config.coefficientPressure).toFixed()} ${strings.getString('mmHg', user.language)}
