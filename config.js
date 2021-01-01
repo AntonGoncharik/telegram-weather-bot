@@ -4,6 +4,7 @@ module.exports = {
   dbURL: 'mongodb+srv://admin:cNJ08Kc1J5pN05TT@cluster0.72oi3.mongodb.net/weather?retryWrites=true&w=majority',
   schedule: '0 1 * * * *',
   coefficientPressure: 1.33322,
+  timezone: 'Europe/Minsk',
   dbOptions: {
     useUnifiedTopology: true,
     useNewUrlParser: true,

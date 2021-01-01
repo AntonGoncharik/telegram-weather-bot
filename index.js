@@ -24,7 +24,7 @@ const sendWeather = async () => {
                     }
                 }
             } catch (error) {
-                bot.sendMessage(user.telegramId, strings.getString('error', user.language));
+                await bot.sendMessage(user.telegramId, strings.getString('error', user.language));
                 console.log(error);
             }
         }
@@ -37,7 +37,7 @@ const start = async () => {
     try {
         await mongoose.connect(config.dbURL, config.dbOptions);
 
-        cron.schedule(config.schedule, sendWeather);
+        cron.schedule(config.schedule, sendWeather, { timezone: config.timezone });
     } catch (error) {
         console.log(error);
     }
