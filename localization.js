@@ -3,7 +3,7 @@ const LocalizedStrings = require('localized-strings').default;
 const strings = new LocalizedStrings({
     en: {
         introduction: 'Hello! Please, choose your language.',
-        enterName: 'Please, type your name. Example: you need to write the command /name your name.',
+        enterName: 'Please, type your name. Example: you need to write the command /name <your name>.',
         greeting: 'Hello',
         buttonLocation: 'My location',
         location: 'I also need to know your city. Please, press the button My location.',
@@ -41,7 +41,7 @@ const strings = new LocalizedStrings({
     },
     ru: {
         introduction: 'Привет! Пожалуйста, выбери язык.',
-        enterName: 'Напиши пожалуйста свое имя. Пример: ты должен написать команду /name твое имя.',
+        enterName: 'Напиши пожалуйста свое имя. Пример: ты должен написать команду /name <твое имя>.',
         greeting: 'Привет',
         buttonLocation: 'Мое местонахождение',
         location: 'Еще надо узнать твой город. Нажми пожалуйста на кнопку Мое местонахождение.',
